@@ -1,5 +1,5 @@
 .env
 /vendor
-/storage/*.key
+/storage
 /.idea
 /public/upload
