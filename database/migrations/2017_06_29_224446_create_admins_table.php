@@ -20,8 +20,8 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('status')->default('0');
             $table->string('level')->default('0');
-            $table->string('hash');
-            $table->string('type');
+            $table->string('hash')->nullable();
+            $table->string('type')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

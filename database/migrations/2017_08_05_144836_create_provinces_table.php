@@ -17,7 +17,7 @@ class CreateProvincesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-			$table->integer('published')->default('1');
+			      $table->integer('published')->default('1');
             $table->timestamps();
         });
     }
