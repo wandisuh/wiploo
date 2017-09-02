@@ -54,7 +54,7 @@
                 <div class="clearfix"></div>
                 <br />
 
-                
+
               </div>
             </form>
           </section>
@@ -67,6 +67,7 @@
               <h1>Create Account</h1>
               <div>
                 <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                <input type="hidden" name="level" class="form-control" placeholder="Name" value="1" />
               </div>
               <div>
                 <input type="email" name="email" class="form-control" placeholder="Email" required="" />
@@ -88,7 +89,7 @@
                 <div class="clearfix"></div>
                 <br />
 
-                
+
               </div>
             </form>
           </section>

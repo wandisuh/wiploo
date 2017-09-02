@@ -63,6 +63,7 @@ class UsersController extends Controller
         $admin = new Xdata;
         $admin->name = $request->name;
         $admin->email = $request->email;
+        $admin->level = $request->level;
         $admin->password = bcrypt($request->password);
         $admin->hash = hash::make($request->name. date('Y-m-d h:i:s'));
         $admin->type = 'Super User';
