@@ -53,8 +53,8 @@
 				<tr>
 				  <th>Name</th>
 				  <th>Email</th>
-				  <th>Point</th>
 				  <th>Create At</th>
+          <th>Action</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -62,8 +62,11 @@
 					<tr>
 					  <td>{{ $user->name }}</td>
 					  <td>{{ $user->email }}</td>
-					  <td>{{ $user->point }}</td>
 					  <td>{{ $user->created_at }}</td>
+					  <td>
+              <a href="{{ route('edit-admin', ['id'=> $user->id]) }}" type="button" class="btn btn-success btn-sm">Edit</a>
+  						<button type="button" class="btn btn-sm btn-warning" onclick="sw_alert({{$user->id}})">Delete</button>
+            </td>
 					</tr>
 				@endforeach
 			  </tbody>
@@ -76,7 +79,32 @@
 </div>
 
 <!-- jQuery -->
-<script src="{{ asset('/assets/backend') }}/vendors/jquery/dist/jquery.min.js"></script>
+<script src="{{ asset('/assets/backend/vendors/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/sw_alert/dist/sweetalert-dev.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/sw_alert/dist/sweetalert.css') }}">
+<script type="text/javascript">
+	function sw_alert(id) {
+		swal({
+		  title: "",//"Apakah anda ingin menghapus data ini?",
+		  text: "Apakah anda ingin menghapus data ini?",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes",
+		  cancelButtonText: "No",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+			window.location = 'admin/'+id+'/delete';
+		  } else {
+			swal("Cancelled", "", "error");
+		  }
+		});
+	}
+
+</script>
 <!--
 <script type="text/javascript">
 $(function() {

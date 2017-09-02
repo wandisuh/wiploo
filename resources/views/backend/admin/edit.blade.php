@@ -40,19 +40,20 @@
 				</div>
 			@endif
 
-			<form class="form-horizontal form-label-left" method="POST" action="{{ route('store-admin') }}">
+			<form class="form-horizontal form-label-left" method="POST" action="{{ route('update-admin') }}">
 				{{ csrf_field() }}
 
 			  <div class="form-group">
 				<label class="control-label col-md-2 col-sm-3 col-xs-12">Nama</label>
 				<div class="col-md-5 col-sm-9 col-xs-12">
-				  <input type="text" class="form-control" value="{{ old('name') }}" name="name" required>
+				  <input type="text" class="form-control" value="{{ $admin->name }}" name="name" required>
+          <input type="hidden" class="form-control" value="{{ $admin->id }}" name="id" required>
 				</div>
 			  </div>
         <div class="form-group">
 				<label class="control-label col-md-2 col-sm-3 col-xs-12">Email</label>
 				<div class="col-md-5 col-sm-9 col-xs-12">
-				  <input type="email" class="form-control" value="{{ old('email') }}" name="email" required>
+				  <input type="email" class="form-control" value="{{ $admin->email }}" name="email" required>
 				</div>
 			  </div>
 			  <div class="form-group">
@@ -60,9 +61,9 @@
 				<div class="col-md-4 col-sm-9 col-xs-12">
 				  <select class="form-control" name="level" required>
 					<option value="">Choose Status</option>
-					<option value="1">Super Admin</option>
-					<option value="2">Admin</option>
-          <option value="3">Penulis Artikel</option>
+					<option value="1" @if($admin->level == 1) selected @endif >Super Admin</option>
+					<option value="2" @if($admin->level == 2) selected @endif >Admin</option>
+          <option value="3" @if($admin->level == 3) selected @endif >Penulis Artikel</option>
 				  </select>
 				</div>
 			  </div>
@@ -71,15 +72,15 @@
 				<div class="col-md-4 col-sm-9 col-xs-12">
 				  <select class="form-control" name="status" required>
 					<option value="">Choose Status</option>
-					<option value="0">Non Active</option>
-					<option value="1">Active</option>
+					<option value="0" @if($admin->status == 0) selected @endif >Non Active</option>
+					<option value="1" @if($admin->status == 1) selected @endif >Active</option>
 				  </select>
 				</div>
 			  </div>
         <div class="form-group">
 				<label class="control-label col-md-2 col-sm-3 col-xs-12">Password</label>
 				<div class="col-md-5 col-sm-9 col-xs-12">
-				  <input type="password" class="form-control" value="{{ old('password') }}" name="password" required>
+				  <input type="password" class="form-control" value="{{ old('password') }}" name="password" >
 				</div>
 			  </div>
 
