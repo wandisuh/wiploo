@@ -51,6 +51,14 @@ class VideoController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        if(Request::hasFile('file')){
+
+            $file = Request::file('file');
+            $filename = $file->getClientOriginalName();
+            $path = public_path().'/upload/videos/';
+            return $file->move($path, $filename);
+        }
+
   		  return redirect()->route('')->with('success','Data berhasil disimpan.');
   	}
 
