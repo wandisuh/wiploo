@@ -24,18 +24,18 @@ class ArticlesController extends Controller
 	public function __construct() {
 		$this->middleware('auth');
 	}
-	
-	public function index() { 
+
+	public function index() {
 		$articles = Article::get();
 		return view('backend.articles.index', compact('articles'));
 	}
-	
+
 	public function addArticle() {
 		$categories = Category::where('published', 1)->get();
 		return view('backend.articles.addArticle', compact('categories'));
 	}
-	
-	public function store(Request $request) { 
+
+	public function store(Request $request) {
 		$validator = Validator::make($request->all(), [
             'title' => 'required',
             'category_id' => 'required',
@@ -46,18 +46,20 @@ class ArticlesController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-		
+
 		$destinationPath = 'upload/img_artikel/';
 		$imgFile = $request->file('image');
 		$extension = $imgFile->getClientOriginalExtension();
 		$imgFileName = microtime(true) . '.' . $extension;
-		
+
 		//Create thumb
 		$thumbName = "thumb_" . $imgFileName;
+		$xName = "x_" . $imgFileName;
 		Image::make($imgFile->getRealPath())->fit(self::THUMB_WIDTH, self::THUMB_HEIGHT)->save($destinationPath . $thumbName);
+		Image::make($imgFile->getRealPath())->fit(self::THUMB_WIDTH, self::THUMB_HEIGHT)->save($destinationPath . $xName);
 
 		$imgFile->move($destinationPath, $imgFileName);
-		
+
 		$article = new Article;
 		$article->title = $request->title;
 		$article->category_id = $request->category_id;
@@ -72,16 +74,16 @@ class ArticlesController extends Controller
 		$seo->og_name = 'Wiploo';
 		$seo->slug = str_slug($request->title);
 		$seo->save();
-		
+
 		return redirect()->route('data-articles')->with('success','Data berhasil disimpan.');
 	}
-	
+
 	public function edit($id) {
 		$article = Article::find($id);
 		$categories = Category::where('published', 1)->get();
 		return view('backend.articles.editArticle', compact('article','categories'));
 	}
-	
+
 	public function update(Request $request) {
 		$validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -93,7 +95,7 @@ class ArticlesController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-		
+
 		$destinationPath = 'upload/img_artikel/';
 		$imgFile = $request->file('image');
 		$cek_article = Article::where('id', $request->id)->first();
@@ -101,7 +103,7 @@ class ArticlesController extends Controller
 		if($imgFile) { dd($imgFile);
 			$extension = $imgFile->getClientOriginalExtension();
 			$imgFileName = microtime(true) . '.' . $extension;
-			
+
 			//Create thumb
 			$thumbName = "thumb_" . $imgFileName;
 			$xName = "x_" . $imgFileName;
@@ -113,7 +115,7 @@ class ArticlesController extends Controller
 			unlink('/var/www/html/wiploo/public/upload/img_artikel/'.$cek_article->image);
 			unlink('/var/www/html/wiploo/public/upload/img_artikel/thumb_'.$cek_article->image);
 			unlink('/var/www/html/wiploo/public/upload/img_artikel/x_'.$cek_article->image);
-			
+
 			$article = Article::find($request->id);
 			$article->title = $request->title;
 			$article->category_id = $request->category_id;
@@ -143,17 +145,17 @@ class ArticlesController extends Controller
 			$seo->slug = str_slug($request->title);
 			$seo->save();
 		}
-		
-		
+
+
 		return redirect()->route('data-articles')->with('success','Data berhasil disimpan.');
 	}
-	
+
 	public function deleteArticle($id) {
 		$artikel = Article::where('id', $id)->first();
 
 		Article::where('id', $id)->delete();
 		Seo::where('slug', $artikel->slug)->delete();
-		
+
 		unlink('/var/www/html/wiploo/public/upload/img_artikel/'.$artikel->image);
 		unlink('/var/www/html/wiploo/public/upload/img_artikel/thumb_'.$artikel->image);
 		unlink('/var/www/html/wiploo/public/upload/img_artikel/x_'.$artikel->image);
