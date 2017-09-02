@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('test',function(){
+	
+    return response([1,2,3,4],200);   
+});
+
+Route::get('getDataArticles',['as' => 'api-data-articles', 'uses' => 'Backend\ArticlesController@getData']);
+
+Route::get('getDataUsers',['as' => 'api-data-users', 'uses' => 'Backend\MemberController@getData']);
