@@ -3,27 +3,27 @@
 @section('content')
 <div class="right_col" role="main">
   <div class="">
-	<div class="page-title">
-	  <div class="title_left">
-		<h3><marquee>welcome...</marquee></h3>
-	  </div>
+    <div class="page-title">
+      <div class="title_left">
+      <h3>&nbsp;</h3>
+      </div>
 
-	  <div class="title_right">
-		<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-		  <div class="input-group">
-			<input type="text" class="form-control" placeholder="Search for...">
-			<span class="input-group-btn">
-			  <button class="btn btn-default" type="button">Go!</button>
-			</span>
-		  </div>
-		</div>
-	  </div>
-	</div>
+      <div class="title_right hide">
+      <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search for...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+        </div>
+      </div>
+      </div>
+    </div>
 
 	<div class="clearfix"></div>
 
 	<div class="row">
-	  
+
 		<div class="x_panel">
 		  <div class="x_title">
 			<h2>&nbsp; <small>&nbsp;</small></h2>
@@ -62,7 +62,7 @@
 					  <td>{{ $user->point }}</td>
 					  <td>{{ $user->created_at }}</td>
 					</tr>
-				@endforeach	
+				@endforeach
 			  </tbody>
 			</table>
 		  </div>
@@ -82,9 +82,9 @@ $(function() {
 		type: 'get',
 		dataType: 'json',
 		//beforeSend: function(){$("#overlay2").show();},
-		success: function(data){ 
+		success: function(data){
 			console.log(data);
-			let html = data.map(function (item, key) { 
+			let html = data.map(function (item, key) {
 
 			data += `<tr>
 					  <td>${item.name}</td>
@@ -93,12 +93,12 @@ $(function() {
 					  <td>${item.created_at}</td>
 					</tr>`
 
-			return data         
+			return data
 
 		}).reduce((carry, item) => carry + item, '')
 		$("#member").html(html);
 		}
-	});		
+	});
 });
 </script>
  -->

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="robots" content="noindex, nofollow" />
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
@@ -36,7 +36,7 @@
             <!-- menu profile quick info -->
             @include('backend.layouts.profile')
             <!-- /menu profile quick info -->
-			
+
             <br />
 
             <!-- sidebar menu -->
@@ -108,7 +108,7 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{ asset('/assets/backend') }}/vendors/moment/min/moment.min.js"></script>
     <script src="{{ asset('/assets/backend') }}/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    
+
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('/assets/backend') }}/build/js/custom.min.js"></script>
 	@yield('script')

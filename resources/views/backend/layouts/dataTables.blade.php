@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="robots" content="noindex, nofollow" />
     <title>DataTables | Gentelella</title>
 
     <!-- Bootstrap -->
@@ -113,7 +113,7 @@
 	<script src="{{ asset('/assets/backend') }}/vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{ asset('/assets/backend/build/js/custom.min.js') }}"></script> 
+    <script src="{{ asset('/assets/backend/build/js/custom.min.js') }}"></script>
 
   </body>
 </html>

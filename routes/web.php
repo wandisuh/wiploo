@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'xdata'], function() {
 	Route::get('/media',['as' => 'data-media-gallery', 'uses' => 'Backend\MediaController@index']);
 
 	Route::get('/logout',['as' => 'admin-logout', 'uses' => 'Backend\UsersController@logout']);
+  Route::get('/notification',['as' => 'admin-notification', 'uses' => 'Backend\UsersController@notification']);
 	Route::get('/profile', ['as' => 'admin-profile', 'uses' => 'Backend\UsersController@profile']);
 	Route::post('/profile', ['as' => 'sadmin-profile-post', 'uses' => 'Backend\UsersController@signupProfilePost']);
 });

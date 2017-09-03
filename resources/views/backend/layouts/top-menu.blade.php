@@ -20,7 +20,7 @@
 			  </a>
 			</li>
 			<li><a href="javascript:;">Help</a></li>
-			<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+			<li><a href="{{ route('admin-logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 		  </ul>
 		</li>
 
@@ -80,7 +80,7 @@
 			</li>
 			<li>
 			  <div class="text-center">
-				<a>
+				<a href="{{ route('admin-notification') }}">
 				  <strong>See All Alerts</strong>
 				  <i class="fa fa-angle-right"></i>
 				</a>
