@@ -100,7 +100,7 @@ class ArticlesController extends Controller
 		$imgFile = $request->file('image');
 		$cek_article = Article::where('id', $request->id)->first();
 
-		if($imgFile) { dd($imgFile);
+		if($imgFile) {
 			$extension = $imgFile->getClientOriginalExtension();
 			$imgFileName = microtime(true) . '.' . $extension;
 
@@ -140,7 +140,7 @@ class ArticlesController extends Controller
 			$article->slug = str_slug($request->title);
 			$article->save();
 
-			$seo = Seo::find($cek_article->slug);
+			$seo = Seo::where('slug',$cek_article->slug)->first();
 			$seo->og_name = 'Wiploo';
 			$seo->slug = str_slug($request->title);
 			$seo->save();

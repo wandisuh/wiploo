@@ -15,7 +15,7 @@ class SubCategoryController extends Controller
     public function __construct() {
 		$this->middleware('auth');
 	}
-	
+
     public function per_category($id) {
     	$subcategories = SubCategory::where('category_id', $id)->get();
     	$category = Category::where('id', $id)->first();
@@ -24,9 +24,9 @@ class SubCategoryController extends Controller
 
     public function add($id) {
     	$category = Category::where('id', $id)->first();
-		return view('backend.sub_category.add',compact('category'));	
+		return view('backend.sub_category.add',compact('category'));
 	}
-	
+
 	public function store(Request $request) {
 		$validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -36,7 +36,7 @@ class SubCategoryController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-		
+
 		$subcategory = new SubCategory;
 		$subcategory->name = $request->name;
 		$subcategory->category_id = $request->category_id;
@@ -48,16 +48,16 @@ class SubCategoryController extends Controller
 		$seo->og_name = 'Wiploo';
 		$seo->slug = str_slug($request->name);
 		$seo->save();
-		
+
 		return redirect()->route('sub-category-per-category', ['id'=>$request->category_id])->with('success','Data berhasil disimpan.');
 	}
-	
+
 	public function edit($category_id,$id) {
 		$subcategory = SubCategory::find($id);
 		$category = Category::find($category_id);
 		return view('backend.sub_category.edit',compact('category','subcategory'));
 	}
-	
+
 	public function delete_category($category_id, $id) {
 		$slug = SubCategory::where('id',$id)->first();
 		SubCategory::find($id)->delete();
@@ -67,8 +67,10 @@ class SubCategoryController extends Controller
 
 		return redirect()->route('sub-category-per-category', ['id'=>$category_id])->with('alert-success', 'berhasil dihapus.');
 	}
-	
+
 	public function update(Request $request) {
+    $cek_subcategory = SubCategory::find($request->id);
+
 		$subcategory = SubCategory::find($request->id);
 		$subcategory->name = $request->name;
 		$subcategory->category_id = $request->category_id;
@@ -76,7 +78,7 @@ class SubCategoryController extends Controller
 		$subcategory->published = $request->published;
 		$subcategory->save();
 
-		$seo = Seo::find($category->slug);
+		$seo = Seo::where('slug',$cek_subcategory->slug)->first();
 		$seo->og_name = 'Wiploo';
 		$seo->slug = str_slug($request->name);
 		$seo->save();

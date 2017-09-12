@@ -14,16 +14,16 @@ class CategoryController extends Controller
     public function __construct() {
 		$this->middleware('auth');
 	}
-	
+
 	public function index() {
 		$categories = Category::get();
 		return view('backend.category.index', compact('categories'));
 	}
-	
+
 	public function add() {
-		return view('backend.category.add');	
+		return view('backend.category.add');
 	}
-	
+
 	public function store(Request $request) {
 		$validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
-		
+
 		$category = new Category;
 		$category->name = $request->name;
 		$category->slug = str_slug($request->name);
@@ -44,18 +44,18 @@ class CategoryController extends Controller
 		$seo->og_name = 'Wiploo';
 		$seo->slug = str_slug($request->name);
 		$seo->save();
-		
+
 		return redirect()->route('data-categories')->with('success','Data berhasil disimpan.');
 	}
-	
+
 	public function edit($id) {
 		$category = Category::find($id);
 		return view('backend.category.edit',compact('category'));
 	}
-	
+
 	public function delete_category($id) {
 		$slug = Category::where('id',$id)->first();
-		
+
 		Category::where('id', $id)->delete();
 		Seo::where('slug', $slug->slug)->delete();
 
@@ -69,15 +69,17 @@ class CategoryController extends Controller
 
 		return redirect()->route('data-categories')->with('alert-success', 'berhasil dihapus.');
 	}
-	
+
 	public function update(Request $request) {
+    $cek_category = Category::find($request->id);
+
 		$category = Category::find($request->id);
 		$category->name = $request->name;
 		$category->slug = str_slug($request->name);
 		$category->published = $request->published;
 		$category->save();
 
-		$seo = Seo::find($category->slug);
+		$seo = Seo::where('slug',$cek_category->slug)->first();
 		$seo->og_name = 'Wiploo';
 		$seo->slug = str_slug($request->name);
 		$seo->save();
@@ -89,5 +91,5 @@ class CategoryController extends Controller
 		$seo = Seo::where('slug',$slug)->first();
 		return $seo;
 	}
-	
+
 }

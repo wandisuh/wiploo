@@ -10,11 +10,12 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
+        <meta name="robots" content="noindex, nofollow" />
         <!-- Mobile Specific Metas
         ================================================== -->
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
@@ -33,7 +34,7 @@
         <link rel="stylesheet" href="{{ asset('assets/frontend/assets/css/main.css') }}">
         <!-- responsive css -->
         <link rel="stylesheet" href="{{ asset('assets/frontend/assets/css/responsive.css') }}">
-        
+
         <!-- Template Javascript Files
         ================================================== -->
         <!-- modernizr js -->
@@ -69,7 +70,7 @@
                     <span class="icon-bar"></span>
                     </button>
                     <!-- /responsive nav button -->
-                    
+
                     <!-- logo -->
                     <div class="navbar-brand">
                         <a href="index.php" >
@@ -86,11 +87,11 @@
                                 <a href="index.php" >Home</a>
                             </li>
                             <li class="dropdown mega-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Article <span class="caret"></span></a>              
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Article <span class="caret"></span></a>
                                  <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="blog-index.php">Blog index</a></li>
-                                       
+
                                     </ul>
                                 </div>
                             </li>
@@ -99,9 +100,9 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="blog-video.php">Video Index</a></li>
-                                        
+
                                     </ul>
-                                </div>  
+                                </div>
                             </li>
                             <li><a class="red-color" href="#">Popular</a></li>
                             <li><a href="#">Community</a></li>
@@ -117,7 +118,7 @@
                                         <p>Not registered yet?<a class="red-color" href="admin/index.php"> Signup Here</a></p>
                                     </form>
                                 </div>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -133,7 +134,7 @@
                 </div>
             </div>
         </header>
-        
+
         <section id="breaking-news-section">
             <div class="container ">
                 <div class="col-md-2 red-bg">
@@ -148,7 +149,7 @@
                 </div>
             </div>
         </section>
-		
+
 		<!-- /slider -->
 		<section id="main-slider-containers">
 			<div class="container">
@@ -164,11 +165,11 @@
 												<p class="slider-date">Date, May 16th 2017</p>
 												<a href="#"> <h2 class="slider-title">Slider News/Article Goes Title Here</h2></a>
 											</div>
-									
+
 								</div>
 							</div>
 						</div>
-				
+
 					</div>
 					<div class="col-md-4 col-sm-4 no-padding">
 						<div class="main-sliders side-banner">
@@ -177,12 +178,12 @@
 									<img src="{{ asset('assets/frontend/assets/images/sidebanner.jpg')}}" class="width-100">
 								</div>
 								<div class="slider-title-container">
-									
+
 											<div class="slider-content">
 												<p class="slider-date">Date, May 16th 2017</p>
 												<a href="#"> <h2 class="slider-title">Slider News/Article Goes Title Here</h2></a>
 											</div>
-										
+
 								</div>
 							</div>
 						</div>
@@ -192,12 +193,12 @@
 									<img src="{{ asset('assets/frontend/assets/images/sidebanner.jpg')}}" class="width-100">
 								</div>
 								<div class="slider-title-container">
-							
+
 									<div class="slider-content">
 										<p class="slider-date">Date, May 16th 2017</p>
 										<a href="#"> <h2 class="slider-title">Slider News/Article Goes Title Here</h2></a>
 									</div>
-										
+
 								</div>
 							</div>
 						</div>
@@ -205,7 +206,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<!--
 		==================================================
 		LAtest News Section Start
@@ -285,7 +286,7 @@
 									<div class="col-md-8">
 										<p class="news-date"> Date, May 06th 2017</p>
 										<h3 class="news-title"><a href="#"> Dummy news title goes here </a></h3>
-										
+
 									</div>
 								</div>
 							</div>
@@ -300,7 +301,7 @@
 									<div class="col-md-8">
 										<p class="news-date"> Date, May 06th 2017</p>
 										<h3 class="news-title"><a href="#"> Dummy news title goes here </a></h3>
-										
+
 									</div>
 								</div>
 							</div>
@@ -314,7 +315,7 @@
 									<div class="col-md-8">
 										<p class="news-date"> Date, May 06th 2017</p>
 										<h3 class="news-title"><a href="#"> Dummy news title goes here </a></h3>
-										
+
 									</div>
 								</div>
 							</div>
@@ -328,7 +329,7 @@
 									<div class="col-md-8">
 										<p class="news-date"> Date, May 06th 2017</p>
 										<h3 class="news-title"><a href="#"> Dummy news title goes here </a></h3>
-										
+
 									</div>
 								</div>
 							</div>
@@ -342,7 +343,7 @@
 									<div class="col-md-8">
 										<p class="news-date"> Date, May 06th 2017</p>
 										<h3 class="news-title"><a href="#"> Dummy news title goes here </a></h3>
-										
+
 									</div>
 								</div>
 							</div>
@@ -426,7 +427,7 @@
 								<hr class="center-red-line-bg">
 							</div>
 						</div>
-						
+
 						<div class="featured-news-container vertical-padding">
 							<!--loop start here-->
 							<div class="news-container">
@@ -476,14 +477,14 @@
 								</div>
 							</div>
 							<!--end-->
-							
+
 						</div>
 					</div>
-						
+
 					</div>
 				</div>
 			</div>
-		</section>  
+		</section>
 		<!--
 		==================================================
 		Call To Action Section Start
@@ -508,7 +509,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section id="pre-footer" class="vertical-padding dark-grey-bg">
 			<div class="container">
 				<div class="col-md-12">
@@ -542,8 +543,8 @@
 				<div class="col-md-12 text-center">
 					<p class="copyright">Copyright: <span>Wiploo 2017</span></p>
 				</div>
-				
+
 		</footer> <!-- /#footer -->
-			
+
 	</body>
 </html>

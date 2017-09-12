@@ -36,9 +36,32 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
-     */
+     
     public function render($request, Exception $exception)
     {
+        return parent::render($request, $exception);
+    }
+    */
+
+    public function render($request, Exception $exception)
+    {
+        if ($exception instanceof TokenMismatchException) {
+
+            return redirect(route('signin'))->withError('error_message', 'You page session expired. Please try to login again');
+        }
+
+        if(ENV('APP_ENV') == 'production')
+        {
+            if ($exception instanceof Exception and !($exception instanceof AuthenticationException || $exception instanceof ValidationException))
+            {
+                // ajax 404 json feedback
+                if ($request->ajax()) {
+                    return response()->json(['error' => 'Not Found'], 404);
+                }
+
+                return response()->view('frontend.404', [], 404);
+            }
+        }
         return parent::render($request, $exception);
     }
     /**
