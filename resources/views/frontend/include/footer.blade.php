@@ -16,7 +16,7 @@
           <li><a href="http://www.facebook.com/wiploo" class="ion-social-facebook" target="_blank"></a></li>
           <li><a href="http://www.twitter.com/wiploo" class="ion-social-twitter" target="_blank"></a></li>
           <li><a href="http://www.instagram.com/wiploo" class="ion-social-instagram" target="_blank"></a></li>
-          <li><a href="http://www.youtube.com/wiploo" class="ion-social-youtube" target="_blank"></a></li>
+          <li><a href="https://www.youtube.com/channel/UC8ICI_AhIDIT8W4PAqaQhTA" class="ion-social-youtube" target="_blank"></a></li>
         </ul>
       </div>
     </div>

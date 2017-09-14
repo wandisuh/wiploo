@@ -46,6 +46,10 @@ class HomeController extends Controller
 				return redirect()->route('subscribe-success')->with('success','Data berhasil disimpan.');
 		}
 
+		public function subscribe_success(Request $request) {
+				return 'p';view('');
+		}
+
 		public function about_us(Request $request) {
 				return 'about_us';
 		}
