@@ -115,5 +115,7 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('/assets/backend/build/js/custom.min.js') }}"></script>
 
+    @yield('custom-script');
+
   </body>
 </html>

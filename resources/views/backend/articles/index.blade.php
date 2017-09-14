@@ -25,7 +25,7 @@
 	<div class="clearfix"></div>
 
 	<div class="row">
-	  
+
 		<div class="x_panel">
 			<div class="col-md-1">
 			  <a type="button" class="btn btn-primary" href="{{ route('add-article') }}">Tambah Artikel</a>
@@ -57,8 +57,9 @@
 				  <th>Author</th>
 				  <th>Kategori</th>
 				  <th>Gambar</th>
-				  <th>Tanggal Pembuatan</th>
+				  <th>Tanggal</th>
 				  <th>Konten</th>
+          <th>Publish</th>
 				  <th>Action</th>
 				</tr>
 			  </thead>
@@ -67,16 +68,28 @@
 					<tr>
 					  <td>{{ $article->title }}</td>
 					  <td>{{ $article->author }}</td>
-					  <td>{{ $article->category_id }}</td>
+					  <td>{{ $article->categories->name }}</td>
 					  <td><img src="{{ asset('/upload/img_artikel/thumb_'.$article->image) }}" style="width:80px;"/></td>
 					  <td>{{ date('d F Y', strtotime($article->created_at)) }}</td>
 					  <td>{{ str_limit($article->content,25) }}</td>
+            <td>
+              <select class="form-control" name="published" id="published">
+					  	@if($article->published == 1)
+					  		<option value="1" selected> Publish </option>
+                <option value="0"> Unpublish </option>
+					   	@else
+					   		<option value="1"> Publish </option>
+                <option value="0" selected> Unpublish </option>
+					   	@endif
+              </select>
+            </td>
 					  <td>
 						<a href="{{ route('edit-article', ['id'=> $article->id]) }}" type="button" class="btn btn-success btn-sm">Edit</a>
 						<button type="button" class="btn btn-sm btn-warning" onclick="sw_alert({{$article->id}})">Delete</button>
+            <a href="{{ route('show-article', ['id'=> $article->id]) }}" type="button" class="btn btn-success btn-sm">View</a>
 					  </td>
 					</tr>
-				@endforeach	
+				@endforeach
 			  </tbody>
 			</table>
 		  </div>
@@ -91,6 +104,7 @@
 <script src="{{ asset('assets/sw_alert/dist/sweetalert-dev.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('assets/sw_alert/dist/sweetalert.css') }}">
 <script type="text/javascript">
+
 	function sw_alert(id) {
 		swal({
 		  title: "",//"Apakah anda ingin menghapus data ini?",
@@ -104,7 +118,7 @@
 		  closeOnCancel: false
 		},
 		function(isConfirm){
-		  if (isConfirm) {  
+		  if (isConfirm) {
 			window.location = 'article/'+id+'/delete';
 		  } else {
 			swal("Cancelled", "", "error");
@@ -112,5 +126,26 @@
 		});
 	}
 
+</script>
+@endsection
+
+@section('custom-script')
+<script>
+    $(document).ready(function() {
+        $('#published').change( function() {
+            alert($('#published').val());
+
+            $.ajax({
+                url: '',
+
+                type: 'post',
+                dataType: 'json',
+                success: function(data){
+                    console.log(data.dooh.alamat);
+
+                }
+            });
+        });
+    });
 </script>
 @endsection

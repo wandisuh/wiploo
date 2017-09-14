@@ -21,6 +21,14 @@ Route::get('/',['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
 Route::get('/articles',['as' => 'articles', 'uses' => 'Frontend\ArticlesController@index']);
 Route::get('/videos',['as' => 'videos', 'uses' => 'Frontend\VideoController@index']);
 
+Route::post('/berlangganan',['as' => 'subscribe-post', 'uses' => 'Frontend\HomeController@subscribe']);
+Route::get('/berlangganan-berhasil',['as' => 'subscribe-success', 'uses' => 'Frontend\HomeController@subscribe_success']);
+
+Route::get('/tentang-kami',['as' => 'about_us', 'uses' => 'Frontend\HomeController@about_us']);
+Route::get('/syarat-ketentuan',['as' => 'term_and_conditions', 'uses' => 'Frontend\HomeController@term_and_conditions']);
+Route::get('/kebijakan-privasi',['as' => 'privacy_policy', 'uses' => 'Frontend\HomeController@privacy_policy']);
+Route::get('/karir',['as' => 'career', 'uses' => 'Frontend\HomeController@career']);
+
 
 Route::group(['middleware' => ['web'], 'prefix' => 'xdata'], function() {
   Route::get('/',['as' => 'xdata-login', 'uses' => 'Backend\UsersController@login']);
@@ -56,6 +64,7 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'xdata'], function() {
 	Route::get('/article/{id}/edit',['as' => 'edit-article', 'uses' => 'Backend\ArticlesController@edit']);
 	Route::post('/article/update',['as' => 'update-article', 'uses' => 'Backend\ArticlesController@update']);
 	Route::get('/article/{id}/delete',['as' => 'bulk-article', 'uses' => 'Backend\ArticlesController@deleteArticle']);
+  Route::get('/article/{id}/show',['as' => 'show-article', 'uses' => 'Backend\ArticlesController@show']);
 
 	Route::get('/videos',['as' => 'data-video', 'uses' => 'Backend\VideoController@index']);
 	Route::get('/video/add',['as' => 'add-video', 'uses' => 'Backend\VideoController@add']);
