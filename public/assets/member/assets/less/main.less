@@ -1,0 +1,390 @@
+@main-color: #0db6ca;
+@text-color: #2b2b2b;
+@red-btn : #ff0000;
+@red-color: #ff0000;
+@text-font: 'Segoe UI';
+@header-font : 'Comfortaa';
+@dark-green : #002935;
+@dark-grey: #787878;
+@light-blue : #337ab7;
+
+
+body {
+	font-family: @text-font;
+	font-weight: 400;
+	font-size: 14px;
+    margin: 0;
+    background-color:@dark-green;
+}
+
+a {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.blue-btn {
+	background: @light-blue;
+	color: #fff;
+	padding: 5px;
+	margin: 10px;
+
+	&:hover {
+		background: #fff;
+		color: #000;
+	}
+}
+
+.add-new-btn {
+	border: solid 1px #ccc;
+}
+
+.input-group {
+	padding: 5px 0;
+}
+
+.navbar-brand {
+	img {
+		width: 150px;
+	}
+}
+
+.width-100 {
+	width: 100%!important;
+}
+
+.navbar-default .navbar-nav>li>a {
+	&:hover {
+		color: @main-color;
+	}
+}
+
+.navbar.navbar-default {
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  .navbar-toggle {
+		margin-top: 32px;
+	}
+}
+.navbar-header .navbar-brand {
+  padding:5px 0;
+  height: auto;
+	a {
+		height: auto;
+		display: inline-block;
+	}
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle {
+	background: #444;
+}
+
+.vertical-padding {
+	padding: 20px 0;
+}
+
+.form-wrapper {
+	input[type="text"],input[type="email"],input[type="phone"],input[type="password"],button {
+		width: 100%;
+		padding: 5px;
+		color: @dark-grey;
+	} 
+
+	p {
+		padding: 5px 0;
+	}
+
+	button {
+		color: #fff;
+	    background:@red-btn;
+	    border: none;
+
+	    &:hover {
+	    	color: #000;
+	    	background: #fff;
+	    }
+	}
+}
+
+.gray-bg {
+	background: #ccc;
+	padding: 20px;
+}
+
+.light-blue-bg {
+	background: @light-blue;
+	padding: 20px;
+	color: #fff;
+}
+.header-font {
+	font-family: @header-font;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#section-wrapper {
+	background: url(../images/bg.jpg);
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	width:100%;
+	position: fixed;
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0;
+}
+
+.white-bg {
+	background-color: #fff;
+}
+
+//Dashboard
+#side-menu {
+	background-color: @dark-green;
+	position: absolute;
+	min-width:150px;
+	z-index:2;
+
+
+
+	#side-menu-wrapper {
+
+		#side-menu-list {
+			padding: 0;
+
+			li {
+				list-style: none;
+				padding: 5px 0;
+
+				a {
+					color: #000;
+					padding: 5px 10px;
+				}
+
+				&:hover {
+					background: #fff;
+
+					a {
+						color: @light-blue;
+					}
+				}
+				&.has-dropdown {
+					position: relative;
+					ul {
+						display:none;
+						position: absolute;
+						top: 0;
+					   	left : 150px;
+					    background-color: #f9f9f9;
+					    min-width: 160px;
+					    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+					    z-index: 1;
+					    padding: 5px;
+					}
+					&:hover {
+							ul {
+								display: block;
+							    
+
+							a{
+								color: #000;
+
+								&:hover {
+									color: @light-blue;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#admin-header {
+	background-color: #fff;
+	z-index: 999;
+	padding: 10px;
+	position: relative;
+	border-bottom: solid 1px #ccc;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+	.row {
+		margin: 0!important;
+	}
+
+	#header-nav {
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+
+			a {
+				font-size: 24px;
+				padding: 5px 10px;
+			}
+
+			&.has-dropdown {
+				position: relative;
+				ul {
+					display: none;
+				    position: absolute;
+				   	right : 0;
+				    background-color: #f9f9f9;
+				    min-width: 250px;
+				    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+					z-index: 999;
+				    padding: 5px;
+
+					li {
+						display: block;
+						padding: 10px 5px;
+
+						a {
+							text-align: left;
+							font-size: 16px;
+						}
+					}
+				}
+
+				&:hover {
+					ul {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+.dashboard-shortcut-button {
+	border-radius : 20px;
+	min-height:200px;
+	position: relative;
+
+	a {
+		color: #fff;
+	    font-size: 16px;
+	    font-family: 'Comfortaa';
+	    vertical-align: middle;
+	    margin: auto;
+	    position: absolute;
+	    width: 100%;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    height: 50%;
+	    right: 0;
+
+		i:before {
+			font-size: 60px;
+			font-weight: bold;
+		}
+	}
+}
+
+.text-right {
+	text-align: right;
+}
+
+#dashboard-header {
+	background-color: @dark-grey;
+	color: #fff;
+}
+
+.post-form-wrapper {
+	i, input[type="submit"]{
+		border: none;
+		background: none;
+		color: @light-blue;
+	}
+
+	
+
+}
+
+.featured-image-field {
+		background: #ccc;
+		padding: 10px!important;
+		border: none;
+}
+
+.input-group{
+	padding: 10px 0;
+}
+
+button.publish {
+		background: @light-blue;
+		padding: 10px 20px;
+		border: none;
+		color: #fff;
+
+		&:hover {
+			background: #ccc;
+			color: #000;
+		}
+	}
+
+//Profile
+
+.profile-wrapper {
+	.edit-profile-form {
+		.edit-form-input {
+			padding: 10px;
+			textarea, input[type="password"], input[type="text"], input[type="phone"], input[type="email"] {
+				width: 100%;
+				padding: 10px;
+			}
+		}
+	}
+}
+
+//Footer
+#footer-admin {
+	width: 100%;
+	background: #ccc;
+	padding: 10px;
+	position:fixed;
+	bottom: 0;
+	z-index: 2;
+}
+
+.page-wrapper {
+	margin-left: 150px!important;
+	min-height: 768px;
+}
+
+#side-menu, body, ul#message-lists {
+	background: url(../images/bgdoodle.png) center center repeat;
+	background-color: #fff;
+}
+
+.padding-left-right {
+	padding: 0 5px;
+}
+
+#category-form-wrapper {
+	input[type="text"], select, textarea {
+		padding: 10px;
+		color: @dark-grey;
+	}
+}
+
+//Inbox
+
+ul#message-lists {
+	height: 500px;
+	overflow: scroll;
+	border: solid 1px #ccc;
+	padding: 10px;
+
+	li {
+		list-style: none;
+		padding: 7px;
+		margin: 4px 0;
+	}
+}

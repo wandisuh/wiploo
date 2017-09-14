@@ -17,9 +17,20 @@ Route::get('/laravel', function () {
 
 Auth::routes();
 
-Route::get('/',['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
-Route::get('/articles',['as' => 'articles', 'uses' => 'Frontend\ArticlesController@index']);
-Route::get('/videos',['as' => 'videos', 'uses' => 'Frontend\VideoController@index']);
+Route::group(['middleware' => ['web'], 'prefix' => 'home'], function() {
+  Route::get('/',['as' => 'home', 'uses' => 'Frontend\HomeController@index']);
+});
+
+Route::get('/',['as' => 'home', 'uses' => 'Frontend\HomeController@index'])->middleware('guest');
+
+Route::get('/artikel',['as' => 'articles-list', 'uses' => 'Frontend\ArticlesController@index']);
+Route::get('/artikel/popular',['as' => 'articles-popular', 'uses' => 'Frontend\ArticlesController@popular']);
+Route::get('/artikel/kategori/{slug}',['as' => 'articles-category', 'uses' => 'Frontend\ArticlesController@category']);
+Route::get('/komunitas',['as' => 'community', 'uses' => 'Frontend\CommunityController@index']);
+Route::get('/artikel/judul/{slug}',['as' => 'article-show', 'uses' => 'Frontend\ArticlesController@show']);
+Route::post('/pencarian-artikel',['as' => 'search-article', 'uses' => 'Frontend\ArticlesController@search']);
+
+Route::get('/videos',['as' => 'videos-list', 'uses' => 'Frontend\VideoController@index']);
 
 Route::post('/berlangganan',['as' => 'subscribe-post', 'uses' => 'Frontend\HomeController@subscribe']);
 Route::get('/berlangganan-berhasil',['as' => 'subscribe-success', 'uses' => 'Frontend\HomeController@subscribe_success']);
@@ -27,7 +38,12 @@ Route::get('/berlangganan-berhasil',['as' => 'subscribe-success', 'uses' => 'Fro
 Route::get('/tentang-kami',['as' => 'about_us', 'uses' => 'Frontend\HomeController@about_us']);
 Route::get('/syarat-ketentuan',['as' => 'term_and_conditions', 'uses' => 'Frontend\HomeController@term_and_conditions']);
 Route::get('/kebijakan-privasi',['as' => 'privacy_policy', 'uses' => 'Frontend\HomeController@privacy_policy']);
+Route::get('/faq',['as' => 'faq', 'uses' => 'Frontend\HomeController@faq']);
 Route::get('/karir',['as' => 'career', 'uses' => 'Frontend\HomeController@career']);
+
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'member'], function() {
+	Route::get('/dashboard',['as' => 'member-dashboard', 'uses' => 'Frontend\DashboardController@index']);
+});
 
 
 Route::group(['middleware' => ['web'], 'prefix' => 'xdata'], function() {
@@ -96,12 +112,12 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'xdata'], function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes();
+//
+// Route::get('/home', 'HomeController@index')->name('home');
+//
+// Auth::routes();
+//
+// Route::get('/home', 'HomeController@index')->name('home');

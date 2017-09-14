@@ -112,10 +112,6 @@ class ArticlesController extends Controller
 
 			$imgFile->move($destinationPath, $imgFileName);
 
-			unlink('/var/www/html/wiploo/public/upload/img_artikel/'.$cek_article->image);
-			unlink('/var/www/html/wiploo/public/upload/img_artikel/thumb_'.$cek_article->image);
-			unlink('/var/www/html/wiploo/public/upload/img_artikel/x_'.$cek_article->image);
-
 			$article = Article::find($request->id);
 			$article->title = $request->title;
 			$article->category_id = $request->category_id;
@@ -126,10 +122,15 @@ class ArticlesController extends Controller
 			$article->slug = str_slug($request->title);
 			$article->save();
 
-			$seo = Seo::find($cek_article->slug);
+			$seo = Seo::where('slug',$cek_article->slug)->first();
 			$seo->og_name = 'Wiploo';
 			$seo->slug = str_slug($request->title);
 			$seo->save();
+
+			unlink('/var/www/html/wiploo/public/upload/img_artikel/'.$cek_article->image);
+			unlink('/var/www/html/wiploo/public/upload/img_artikel/thumb_'.$cek_article->image);
+			unlink('/var/www/html/wiploo/public/upload/img_artikel/x_'.$cek_article->image);
+			
 		}else {
 			$article = Article::find($request->id);
 			$article->title = $request->title;

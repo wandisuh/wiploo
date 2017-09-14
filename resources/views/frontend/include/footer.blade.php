@@ -2,10 +2,10 @@
   <div class="container">
     <div class="col-md-12">
       <ul class="pre-footer-links text-center">
-        <li><a href="{{ route('about_us') }}">About Us</a></li>
-        <li><a href="{{ route('term_and_conditions') }}">Terms And Conditions</a></li>
-        <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
-        <li><a href="{{ route('career') }}">Career</a></li>
+        <li><a href="{{ route('about_us') }}">Tentang Kami</a></li>
+        <li><a href="{{ route('faq') }}">FAQ</a></li>
+        <li><a href="{{ route('privacy_policy') }}">Kebijakan Privasi</a></li>
+        <li><a href="{{ route('career') }}">Karir</a></li>
       </ul>
       <hr style="border-top:1px solid #ccc; width:50%;" />
     </div>
