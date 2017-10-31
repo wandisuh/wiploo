@@ -36,17 +36,16 @@ class UsersController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        if($validator->fails()) { dd($validator);
+        if($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             // Authentication passed...
-            //return redirect()->intended(route('dashboard'));
             return redirect()->route('dashboard');
+        }else {
+            return redirect()->back()->with('msg','Email atau password invailid.');
         }
-        var_dump($request->all()); dump($request->email);
-        return redirect()->back()->withInput()->withErrors('Email / password salah.');
 	}
 
 	public function register_post(Request $request) {

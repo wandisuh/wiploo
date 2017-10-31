@@ -33,6 +33,9 @@
             <form method="post" action="{{ route('xdata-login-post') }}">
 				      {{ csrf_field() }}
               <h1>Login Form</h1>
+              @if(Session::get('msg'))
+                <p class="box-danger">{{ Session::get('msg') }}</p>
+              @endif
               <div>
                 <input type="text" name="email" class="form-control" placeholder="Email" required="" />
               </div>

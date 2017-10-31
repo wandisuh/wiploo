@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow" />
-    <title>DataTables | Gentelella</title>
+    <title>Wiploo.com | Admin Page</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('/assets/backend') }}/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -77,12 +77,7 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+        @include('backend.layouts.footer')
         <!-- /footer content -->
       </div>
     </div>
